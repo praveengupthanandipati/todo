@@ -39,6 +39,7 @@ const Tasks = (props) => {
           </a>
         </div>
       ))}
+      <button className="bg-blue-700 text-white block p-4 w-full rounded-lg">+ Add New Task</button>
     </div>
   );
 };
