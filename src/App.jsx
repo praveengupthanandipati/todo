@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import Tasks from "./Tasks";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const heading = "List of Tasks for the month of November 2024";
+
+  const taskListItems = [
+    {
+      taskTitle: "Learn Javascript",
+      taskDescription:
+        "Learn how to use JavaScript — a powerful and flexible programming language for adding website interactivity.",
+      isCompleted: true,
+    },
+    {
+      taskTitle: "Learn Typescript",
+      taskDescription:
+        "Learn to supercharge your web-applications with the powerful typed language from Microsoft!",
+      isCompleted: false,
+    },
+    {
+      taskTitle: "Learn React",
+      taskDescription:
+        "Welcome to the React documentation! This page will give you an introduction to the 80% of React concepts that you will use on a daily basis.",
+      isCompleted: true,
+    },
+    {
+      taskTitle: "Learn Python",
+      taskDescription:
+        "Master Python by building 100 projects in 100 days. Learn data science, automation, build websites, games and apps!",
+      isCompleted: false,
+    },
+    {
+      taskTitle: "Learn HTML",
+      taskDescription:
+        "In this HTML tutorial, you will find more than 200 examples. With our online 'Try it Yourself' editor, you can edit and test each example yourself",
+      isCompleted: true,
+    },
+  ];
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <Tasks title={heading} tasksList={taskListItems} />
+    </div>
+  );
 }
 
-export default App
+export default App;
