@@ -1,7 +1,10 @@
 import React from "react";
+// import { useState } from "react";
 
 const Tasks = (props) => {
   const { title, tasksList } = props;
+//   const [tasks, setTasks] = useState(taskList);
+  const btnClick = () => alert(title);
   return (
     <div className="w-[1000px] mx-auto my-4">
       <h1 className="text-3xl font-bold text-center">{title}</h1>
@@ -39,7 +42,12 @@ const Tasks = (props) => {
           </a>
         </div>
       ))}
-      <button className="bg-blue-700 text-white block p-4 w-full rounded-lg">+ Add New Task</button>
+      <button
+        className="bg-blue-700 text-white block p-4 w-full rounded-lg"
+        onClick={btnClick}
+      >
+        + Add New Task
+      </button>
     </div>
   );
 };
