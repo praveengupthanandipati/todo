@@ -4,7 +4,6 @@ import { useState } from "react";
 const Tasks = (props) => {
   const { title, tasksList } = props;
   const [tasks, setTasks] = useState(tasksList);
-  const [name, setName] = useState("Praveen");
   //   const btnClick = () => alert(title);
   return (
     <div className="w-[1000px] mx-auto my-4">
