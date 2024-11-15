@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const Tasks = (props) => {
   const { title, tasksList } = props;
-  //   const [tasks, setTasks] = useState(taskList);
+  // const [tasks, setTasks] = useState(taskList);
   const [name, setName] = useState("Praveen");
   //   const btnClick = () => alert(title);
   return (
@@ -44,10 +44,7 @@ const Tasks = (props) => {
           </a>
         </div>
       ))}
-      <button
-        className="bg-blue-700 text-white block p-4 w-full rounded-lg"
-        onClick={() => setName("UI Developer")}
-      >
+      <button className="bg-blue-700 text-white block p-4 w-full rounded-lg">
         + Add New Task
       </button>
     </div>
