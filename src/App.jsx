@@ -1,10 +1,21 @@
-import "./App.css";
-import Tasks from "./Tasks";
+import React, { useState } from "react";
+import Tasks from "./Tasks"; //Import Tasks Component
 
 function App() {
-  const heading = "List of Tasks for the month of November 2024";
+  const [visibleCount, setVisibleCount] = useState(1);
+  const [noMoreTasks, setNoMoreTasks] = useState(false);
+  //Handle load more tasks for button
+  const handleMoreTasks = () => {
+    if (visibleCount < tasks.length) {
+      setVisibleCount(visibleCount + 1); //increasing visible task count by 1
+      setNoMoreTasks(false); //Reset "No More tasks" message
+    } else if (visibleCount >= tasks.length) {
+      setNoMoreTasks(true);
+    }
+  };
 
-  const taskListItems = [
+  // Data list
+  const tasks = [
     {
       taskTitle: "Learn Javascript",
       taskDescription:
@@ -32,14 +43,30 @@ function App() {
     {
       taskTitle: "Learn HTML",
       taskDescription:
-        "In this HTML tutorial, you will find more than 200 examples. With our online 'Try it Yourself' editor, you can edit and test each example yourself",
+        "In this HTML tutorial, you will find more than 200 examples. With our online 'Try it Yourself' editor, you can edit and test each example yourself.",
       isCompleted: true,
     },
   ];
-
   return (
-    <div>
-      <Tasks title={heading} tasksList={taskListItems} />
+    <div className="w[800px] mx-auto">
+      <Tasks
+        title="Tasks list for the month of November 2024"
+        tasksList={[...tasks].splice(0, visibleCount)}
+      />
+
+      <div className="text-center">
+        {noMoreTasks && (
+          <p className="py-4 text-red-700">
+            No More Tasks Available to Display
+          </p>
+        )}
+        <button
+          className="bg-blue-700 text-white px-5 py-2 rounded"
+          onClick={handleMoreTasks}
+        >
+          Load More Tasks
+        </button>
+      </div>
     </div>
   );
 }

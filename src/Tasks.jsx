@@ -1,51 +1,20 @@
 import React from "react";
-import { useState } from "react";
+import Task from "./Task";
 
 const Tasks = (props) => {
-  const { title, tasksList } = props;
-  const [tasks, setTasks] = useState(tasksList);
-  //   const btnClick = () => alert(title);
+  const { title, tasksList } = props; //Destructure Props
   return (
-    <div className="w-[1000px] mx-auto my-4">
-      <h1 className="text-3xl font-bold text-center">{title}</h1>
-      <h5 className="text-center">{name}</h5>
-
-      {tasksList.map((task) => (
-        <div className="shadow p-4 rounded my-4">
-          <article className="pb-4">
-            <h5
-              className={`text-xl ${
-                task.isCompleted ? "line-through" : "text-gray-800"
-              }`}
-            >
-              {task.taskTitle}
-            </h5>
-            <p
-              className={`text-md ${
-                task.isCompleted ? "line-through" : "text-gray-700"
-              }`}
-            >
-              {task.taskDescription}
-            </p>
-          </article>
-          <p
-            className={`text-lg ${
-              task.isCompleted ? "text-green-600" : "text-red-700"
-            }`}
-          >
-            {task.isCompleted ? "Completed" : "Pending"}
-          </p>
-          <a
-            href="#"
-            class="inline-flex font-medium items-center text-blue-600 hover:underline"
-          >
-            Update
-          </a>
-        </div>
+    <div className="w-[800px] mx-auto my-4 p-6 rounded bg-slate-100">
+      <h1 className="text-center text-xl font-semibold text-black pb-5">
+        {title}
+      </h1>
+      {tasksList.map((task, index) => (
+        <Task key={index}
+          taskTitle={task.taskTitle}
+          taskDescription={task.taskDescription}
+          isCompleted={task.isCompleted}
+        />
       ))}
-      <button className="bg-blue-700 text-white block p-4 w-full rounded-lg">
-        + Add New Task
-      </button>
     </div>
   );
 };
