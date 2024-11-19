@@ -1,20 +1,7 @@
 import React, { useState } from "react";
-import Tasks from "./Tasks"; //Import Tasks Component
+import TaskList from "./TaskList";
 
 function App() {
-  const [visibleCouht, setVisibleCount] = useState(2);
-  const [noMoreTasks, setNoMoreTasks] = useState(false);
-
-  //Handle Load more tasks for button
-  const handleMoreTasks = () => {
-    if (visibleCouht < tasks.length) {
-      setVisibleCount(visibleCouht + 1); //increasing visible task count by 1
-      setNoMoreTasks(false);
-    } else if (visibleCouht >= tasks.length) {
-      setNoMoreTasks(true);
-    }
-  };
-  // Data list
   const tasks = [
     {
       taskTitle: "Learn Javascript",
@@ -49,22 +36,8 @@ function App() {
   ];
   return (
     <div className="w[800px] mx-auto">
-      <Tasks
-        title="Tasks list for the month of November 2024"
-        tasksList={[...tasks].splice(0, visibleCouht)}
-      />
-
-      <div className="text-center">
-        {noMoreTasks && (
-          <p className="text-red-600">No More Tasks Available to Display</p>
-        )}
-        <button
-          className="p-2 bg-blue-700 text-white rounded"
-          onClick={handleMoreTasks}
-        >
-          Load More Tasks
-        </button>
-      </div>
+      <h1 className="text-center text-2xl font-bold">Todo List</h1>
+      <TaskList tasks={tasks} />
     </div>
   );
 }
